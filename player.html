@@ -21,18 +21,20 @@
 
     <script>
         let tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачиваем на весь экран
+        tg.expand(); 
 
         const urlParams = new URLSearchParams(window.location.search);
         const videoUrl = urlParams.get('url');
         const container = document.getElementById('player-container');
 
         if (videoUrl) {
-            // Если это YouTube или ссылка на страницу с iframe
-            if (videoUrl.includes('youtube.com') || videoUrl.includes('vimeo.com')) {
-                container.innerHTML = `<iframe src="${videoUrl}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+            if (videoUrl.includes('stravers.live')) {
+                const proxyUrl = `http://127.0.0.1:5000/proxy?url=${encodeURIComponent(videoUrl)}`;
+                container.innerHTML = `<iframe src="${proxyUrl}" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>`;
             } 
-            // Если это потоковое видео .m3u8 (как у HDrezka)
+            else if (videoUrl.includes('youtube.com')) {
+                container.innerHTML = `<iframe src="${videoUrl}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+            }
             else if (videoUrl.includes('.m3u8')) {
                 container.innerHTML = `<video id="videoPlayer" controls autoplay></video>`;
                 const video = document.getElementById('videoPlayer');
@@ -44,7 +46,6 @@
                     video.src = videoUrl;
                 }
             } 
-            // Если это прямая ссылка на .mp4
             else {
                 container.innerHTML = `<video src="${videoUrl}" controls autoplay></video>`;
             }
@@ -53,4 +54,5 @@
         }
     </script>
 </body>
+</html>
 </html>
