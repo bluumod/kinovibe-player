@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino Vibe Player</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Подключаем HLS.js для потокового видео (.m3u8) -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         body { margin: 0; padding: 0; background-color: #000; color: white; font-family: sans-serif; overflow: hidden; }
@@ -52,7 +51,8 @@
         } else {
             container.innerHTML = `<div class="error">Ошибка: Ссылка на видео не передана.</div>`;
         }
-    </script>
+        <script>
+        let tg = window.Telegram.Web
 </body>
 </html>
 </html>
