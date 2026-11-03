@@ -29,7 +29,7 @@
 
         if (videoUrl) {
             if (videoUrl.includes('stravers.live')) {
-                const proxyUrl = `http://127.0.0.1:5000/proxy?url=${encodeURIComponent(videoUrl)}`;
+                const proxyUrl = `https://itinerary-stove-brook.ngrok-free.dev/proxy?url=${encodeURIComponent(videoUrl)}`;
                 container.innerHTML = `<iframe src="${proxyUrl}" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>`;
             } 
             else if (videoUrl.includes('youtube.com')) {
